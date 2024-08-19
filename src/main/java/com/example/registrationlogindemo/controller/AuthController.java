@@ -2,8 +2,10 @@ package com.example.registrationlogindemo.controller;
 
 import com.example.registrationlogindemo.dto.UserDto;
 import com.example.registrationlogindemo.entity.User;
+import com.example.registrationlogindemo.repository.*;
 import com.example.registrationlogindemo.service.UserService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +17,20 @@ import java.util.List;
 
 @Controller
 public class AuthController {
+    @Autowired
+    private AppointmentRepository appointmentRepository;
+    @Autowired
+    private ForumAnswerRepository forumAnswerRepository;
+    @Autowired
+    private ForumQuestionRepository forumQuestionRepository;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private VaccineCentreRepository vaccineCentreRepository;
+    @Autowired
+    private VaccineRepository vaccineRepository;
+    @Autowired
+    private AppointmentSlotRepository appointmentSlotRepository;
 
     private UserService userService;
 
@@ -22,8 +38,8 @@ public class AuthController {
         this.userService = userService;
     }
 
-    @GetMapping("index")
-    public String home(){
+    @GetMapping("/index")
+    public String index() {
         return "index";
     }
 
@@ -34,6 +50,9 @@ public class AuthController {
 
     @GetMapping("/About")
     public String about() {return "about"; }
+
+    @GetMapping("/License")
+    public String license() {return "license"; }
 
     // handler method to handle user registration request
     @GetMapping("register")

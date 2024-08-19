@@ -21,6 +21,6 @@ public class UserDto
     @NotEmpty(message = "Email should not be empty")
     @Email
     private String email;
-    @NotEmpty(message = "Password should not be empty")
+    @NotEmpty(message = "PPSN should not be empty")
     private String password;
 }
